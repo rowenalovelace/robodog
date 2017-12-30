@@ -8,6 +8,158 @@
 #define MOVE_MIDDLE_RIGHT 3
 #define MOVE_FRONT_BACK_LEFT 7
 #define MOVE_MIDDLE_LEFT 8
+void wobble() {
+  digitalWrite(LEG_MIDDLE_LEFT, HIGH);
+  delay(300);
+  digitalWrite(LEG_BACK_LEFT, HIGH);
+  digitalWrite(LEG_FRONT_LEFT, HIGH);
+  delay(300);
+  digitalWrite(LEG_FRONT_LEFT, LOW);
+  digitalWrite(LEG_BACK_LEFT, LOW);
+  delay(300);
+  digitalWrite(LEG_MIDDLE_LEFT, LOW);
+  delay(300);
+  digitalWrite(LEG_MIDDLE_RIGHT, HIGH);
+  delay(300);
+  digitalWrite(LEG_BACK_RIGHT, HIGH);
+  digitalWrite(LEG_FRONT_RIGHT, HIGH);
+  delay(300);
+  digitalWrite(LEG_FRONT_RIGHT, LOW);
+  digitalWrite(LEG_BACK_RIGHT, LOW);
+  delay(300);
+  digitalWrite(LEG_MIDDLE_RIGHT, LOW);
+  delay(300);
+}
+void worm() {
+  digitalWrite(LEG_FRONT_LEFT, HIGH);
+  digitalWrite(LEG_FRONT_RIGHT, HIGH);
+  delay(300);
+  digitalWrite(LEG_MIDDLE_RIGHT, HIGH);
+  digitalWrite(LEG_MIDDLE_LEFT, HIGH);
+  delay(300);
+  digitalWrite(LEG_BACK_LEFT, HIGH);
+  digitalWrite(LEG_BACK_RIGHT, HIGH);
+  delay(300);
+  digitalWrite(LEG_FRONT_LEFT, LOW);
+  digitalWrite(LEG_FRONT_RIGHT, LOW);
+  delay(300);
+  digitalWrite(LEG_MIDDLE_RIGHT, LOW);
+  digitalWrite(LEG_MIDDLE_LEFT, LOW);
+  delay(300);
+  digitalWrite(LEG_BACK_LEFT, LOW);
+  digitalWrite(LEG_BACK_RIGHT, LOW);
+  delay(300);
+}
+void pop() {
+  digitalWrite(LEG_MIDDLE_RIGHT, HIGH);
+  digitalWrite(LEG_MIDDLE_LEFT, HIGH);
+  digitalWrite(LEG_BACK_LEFT, HIGH);
+  digitalWrite(LEG_BACK_RIGHT, HIGH);
+  digitalWrite(LEG_FRONT_LEFT, HIGH);
+  digitalWrite(LEG_FRONT_RIGHT, HIGH);
+  delay(1000);
+  digitalWrite(LEG_MIDDLE_RIGHT, LOW);
+  digitalWrite(LEG_MIDDLE_LEFT, LOW);
+  digitalWrite(LEG_BACK_LEFT, LOW);
+  digitalWrite(LEG_BACK_RIGHT, LOW);
+  digitalWrite(LEG_FRONT_LEFT, LOW);
+  digitalWrite(LEG_FRONT_RIGHT, LOW);
+  delay(2000);
+}
+void sit_lie() {
+  delay(500);
+  digitalWrite(MOVE_MIDDLE_RIGHT, HIGH);
+  digitalWrite(MOVE_FRONT_BACK_LEFT, HIGH);// FORWARD
+  digitalWrite(MOVE_MIDDLE_LEFT, HIGH); // FEET UP
+  digitalWrite(MOVE_FRONT_BACK_RIGHT, HIGH);// FORWARD
+  delay(500);
+  digitalWrite(LEG_MIDDLE_RIGHT, HIGH);
+  digitalWrite(LEG_MIDDLE_LEFT, HIGH);
+  delay(500);
+  digitalWrite(LEG_BACK_LEFT, HIGH);
+  digitalWrite(LEG_BACK_RIGHT, HIGH);
+  delay(1000); // sitting
+  digitalWrite(LEG_FRONT_LEFT, HIGH);
+  digitalWrite(LEG_FRONT_RIGHT, HIGH);
+  delay(1000); // lying
+  digitalWrite(LEG_FRONT_LEFT, LOW);
+  digitalWrite(LEG_FRONT_RIGHT, LOW);
+  delay(500); // sitting
+  digitalWrite(LEG_FRONT_LEFT, HIGH);
+  digitalWrite(LEG_FRONT_RIGHT, HIGH);
+  delay(500); // lying
+  digitalWrite(LEG_FRONT_LEFT, LOW);
+  digitalWrite(LEG_FRONT_RIGHT, LOW);
+  delay(2000); // sitting
+  digitalWrite(MOVE_MIDDLE_RIGHT, LOW);
+  digitalWrite(MOVE_FRONT_BACK_LEFT, LOW);// FORWARD
+  digitalWrite(MOVE_MIDDLE_LEFT, LOW); // FEET UP
+  digitalWrite(MOVE_FRONT_BACK_RIGHT, LOW);// FORWARD
+  delay(500);
+  digitalWrite(LEG_MIDDLE_LEFT, LOW);
+  digitalWrite(LEG_MIDDLE_RIGHT, LOW);
+  digitalWrite(LEG_BACK_LEFT, LOW);
+  digitalWrite(LEG_BACK_RIGHT, LOW);
+  delay(500); // standing
+}
+void sit() {
+  delay(500);
+  digitalWrite(MOVE_MIDDLE_RIGHT, HIGH);
+  digitalWrite(MOVE_FRONT_BACK_LEFT, HIGH);// FORWARD
+  digitalWrite(MOVE_MIDDLE_LEFT, HIGH); // FEET UP
+  digitalWrite(MOVE_FRONT_BACK_RIGHT, HIGH);// FORWARD
+  delay(500);
+  digitalWrite(LEG_MIDDLE_RIGHT, HIGH);
+  digitalWrite(LEG_MIDDLE_LEFT, HIGH);
+  delay(500);
+  digitalWrite(LEG_BACK_LEFT, HIGH);
+  digitalWrite(LEG_BACK_RIGHT, HIGH);
+  delay(1000); // sitting
+  digitalWrite(MOVE_MIDDLE_RIGHT, LOW);
+  digitalWrite(MOVE_FRONT_BACK_LEFT, LOW);// FORWARD
+  digitalWrite(MOVE_MIDDLE_LEFT, LOW); // FEET UP
+  digitalWrite(MOVE_FRONT_BACK_RIGHT, LOW);// FORWARD
+  delay(1000); // sitting
+  digitalWrite(LEG_MIDDLE_LEFT, LOW);
+  digitalWrite(LEG_MIDDLE_RIGHT, LOW);
+  digitalWrite(LEG_BACK_LEFT, LOW);
+  digitalWrite(LEG_BACK_RIGHT, LOW);
+  delay(500);
+}
+void walk() {
+  digitalWrite(LEG_MIDDLE_RIGHT, HIGH); // FEET UP
+  digitalWrite(LEG_BACK_LEFT, HIGH);
+  digitalWrite(LEG_FRONT_LEFT, HIGH);
+  delay(300);
+  digitalWrite(MOVE_MIDDLE_RIGHT, HIGH);
+  digitalWrite(MOVE_FRONT_BACK_LEFT, HIGH);// FORWARD
+  delay(300);
+  digitalWrite(LEG_MIDDLE_RIGHT, LOW); // FEET DOWn
+  digitalWrite(LEG_BACK_LEFT, LOW);
+  digitalWrite(LEG_FRONT_LEFT, LOW);
+  delay(300);
+  digitalWrite(MOVE_MIDDLE_RIGHT, LOW);
+  digitalWrite(MOVE_FRONT_BACK_LEFT, LOW);// BACK
+  delay(300);
+
+  digitalWrite(LEG_MIDDLE_LEFT, HIGH); // FEET UP
+  digitalWrite(LEG_BACK_RIGHT, HIGH);
+  digitalWrite(LEG_FRONT_RIGHT, HIGH);
+  delay(300);
+
+  digitalWrite(MOVE_MIDDLE_LEFT, HIGH); // FEET UP
+  digitalWrite(MOVE_FRONT_BACK_RIGHT, HIGH);// FORWARD
+  delay(300);
+
+  digitalWrite(LEG_MIDDLE_LEFT, LOW); // FEET DOWN
+  digitalWrite(LEG_BACK_RIGHT, LOW);
+  digitalWrite(LEG_FRONT_RIGHT, LOW);
+  delay(300);
+  digitalWrite(MOVE_MIDDLE_LEFT, LOW); // FEET
+  digitalWrite(MOVE_FRONT_BACK_RIGHT, LOW);// BACK
+  delay(300);
+
+}
 void setup() {
    pinMode(2, OUTPUT);
    pinMode(3, OUTPUT);
@@ -31,39 +183,8 @@ void setup() {
    digitalWrite(10, LOW);
    digitalWrite(11, LOW);
 
-   delay(5000);
+   delay(500);
 }
 
 void loop() {
-  digitalWrite(LEG_MIDDLE_RIGHT, HIGH); // FEET UP
-  digitalWrite(LEG_BACK_LEFT, HIGH);
-  digitalWrite(LEG_FRONT_LEFT, HIGH);
-  delay(1000);
-  digitalWrite(MOVE_MIDDLE_RIGHT, HIGH);
-  digitalWrite(MOVE_FRONT_BACK_LEFT, HIGH);// FORWARD
-  delay(1000);
-  digitalWrite(LEG_MIDDLE_RIGHT, LOW); // FEET UP
-  digitalWrite(LEG_BACK_LEFT, LOW);
-  digitalWrite(LEG_FRONT_LEFT, LOW);
-  delay(1000);
-
-  digitalWrite(LEG_MIDDLE_LEFT, HIGH); // FEET UP
-  digitalWrite(LEG_BACK_RIGHT, HIGH);
-  digitalWrite(LEG_FRONT_RIGHT, HIGH);
-  delay(1000);
-
-  digitalWrite(MOVE_MIDDLE_RIGHT, LOW); // FEET UP
-  digitalWrite(MOVE_FRONT_BACK_LEFT, LOW);// FORWARD
-  delay(1000);
-
-  digitalWrite(MOVE_MIDDLE_LEFT, HIGH); // FEET UP
-  digitalWrite(MOVE_FRONT_BACK_RIGHT, HIGH);// FORWARD
-  delay(1000);
-
-
-  digitalWrite(LEG_MIDDLE_LEFT, LOW); // FEET UP
-  digitalWrite(LEG_BACK_RIGHT, LOW);
-  digitalWrite(LEG_FRONT_RIGHT, LOW);
-  delay(1000);
-
 }
